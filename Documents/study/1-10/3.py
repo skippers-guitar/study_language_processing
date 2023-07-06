@@ -1,4 +1,4 @@
-def sentence_reverce(sentence1,sentence2):
+def sentence_mix(sentence1,sentence2):
     len_sen1 = len(sentence1)
     len_sen2 = len(sentence2)
 
@@ -31,5 +31,5 @@ if __name__ == "__main__":
     #文字列
     sentence1 = 'パトカーあああああああああああ'
     sentence2 = 'タクシーーーーーー'
-    answer = sentence_reverce(sentence1,sentence2)
+    answer = sentence_mix(sentence1,sentence2)
     print(answer)
