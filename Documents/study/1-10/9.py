@@ -11,8 +11,8 @@ def Typoglycemia(sen):
             new_wd = wd
         new_list.append(new_wd)
 
-    new_list = ' '.join(new_list)
-    return new_list
+    answer = ' '.join(new_list)
+    return answer
 
 if __name__ == "__main__":
     #文字列
