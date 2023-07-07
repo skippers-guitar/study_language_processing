@@ -1,0 +1,1 @@
+paste col1_sh.txt col2_sh.txt > merge_sh.txt
