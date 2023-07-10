@@ -1,1 +1,1 @@
-split -n $1 popular-names.txt
+split -n $1 -d popular-names.txt bunkatsu_list
