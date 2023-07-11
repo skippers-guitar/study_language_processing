@@ -6,11 +6,8 @@ def filter_not_empty(list_a):
     
 
 def open_wiki():
-
-    # dir = os.path.dirname(__file__)
     a = path.join(path.dirname(__file__), 'jawiki-country.json')
 
-    # with open(dir + '/jawiki-country.json','r', encoding='utf-8') as f:
     with open(a,'r', encoding='utf-8') as f:
         json_lines = f.read().splitlines()
         json_lines = filter_not_empty(json_lines)
