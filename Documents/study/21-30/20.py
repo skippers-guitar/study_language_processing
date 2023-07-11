@@ -34,4 +34,8 @@ if __name__ == "__main__":
 
     file_json = open_wiki()
     result = text_get(file_json, "イギリス")    
-    print(result)
+
+    b = path.join(path.dirname(__file__), 'result.txt')
+
+    with open(b,'w',encoding='utf-8') as f2:
+        f2.write(result) 
