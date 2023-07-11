@@ -12,7 +12,7 @@ if __name__ == "__main__":
     list = text.split("\n")
     print(len(list))
 
-    result = [gyou for gyou in list if re.match('^(?=.*\[Category).*$',gyou) != None]
+    result = [re.match("\[\[Category:(.+)\]\]",gyou).groups() for gyou in list if re.match('^(?=.*\[\[Category.+\]\]).*$',gyou) != None]
 
     for k in result:
         print(k)
