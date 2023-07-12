@@ -1,5 +1,6 @@
 import json
 from os import path
+import re
 
 def filter_not_empty(list_a):
     return filter(lambda x: len(x) > 0 , list_a)
@@ -33,6 +34,19 @@ def file_output(str,name):
     b = path.join(path.dirname(__file__), name + '.txt')
     with open(b,'w',encoding='utf-8') as f2:
         f2.write(str) 
+
+def kisoinfo(art_text):
+    kisoinfo_start_index = re.search("\{\{基礎情報", art_text).end()
+    cnt = 0
+    for i in range(kisoinfo_start_index,len(art_text)):
+        if art_text[i] == "{":
+            cnt += 1
+        elif art_text[i] == "}":
+            cnt += -1
+        if cnt == -2:
+            kisoinfo_end_index = i
+            break
+    return(art_text[kisoinfo_start_index:kisoinfo_end_index-1])
 
 if __name__ == "__main__":
     #文字列
