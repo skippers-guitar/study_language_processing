@@ -48,6 +48,32 @@ def kisoinfo(art_text):
             break
     return(art_text[kisoinfo_start_index:kisoinfo_end_index-1])
 
+def kisoinfo_template_library(kisoinfo):
+    find_kekka = re.findall("(?:\n\||^\|)(.+?)\s*\=\s*(.+?)(?:(?=\n\|)|(?=\n$))",kisoinfo,re.DOTALL)
+    result = {}
+    for i in find_kekka:
+        result[i[0]] = i[1]
+    return(result)
+
+def emphasize_delete(str):
+    return(re.sub(r"(\'{2,5})(?P<emphasize_content>.+?)(\'{2,5})","\g<emphasize_content>",str,flags = re.DOTALL+re.MULTILINE))
+
+def link_delete(str):
+    result = re.sub(r"\[\[(?:[^\|]+?\|)??(?P<link_content>[^\|]+?)\]\]",r"\g<link_content>",str,flags = re.DOTALL+re.MULTILINE)
+    return(result)
+
+def html_delete(str):
+    str = re.sub('<[^>]*>',"",str,flags = re.DOTALL+re.MULTILINE)
+    return(str)
+
+def lang_delete(str):
+    str = re.sub('\{\{lang\|[^\|]*\|(?P<lang_content>[^\|]+?)\}\}',"\g<lang_content>",str,flags = re.DOTALL+re.MULTILINE)
+    return(str)
+    
+def indent_delete(str):
+    str = re.sub('\*{1,5}',"",str,flags = re.DOTALL+re.MULTILINE)
+    return(str)
+
 if __name__ == "__main__":
     #文字列
 

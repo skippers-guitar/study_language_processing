@@ -6,17 +6,15 @@ if __name__ == "__main__":
     #文字列
 
     file_json = f_r.open_wiki()
-    text = f_r.text_get(file_json, "イギリス")    
-
-    list = text.split("\n")
+    art_text = f_r.text_get(file_json, "イギリス")    
 
     result = []
 
-    for gyou in list:
-        if re.match("^(?=.*(ファイル|file)\:[^/.]+\.(jpg|jpeg|mp3|mp4|ping|png)).*$",gyou) != None:    
-            find_kekka = re.findall("(ファイル|file)\:([^/.]+\.(jpg|jpeg|mp3|mp4|ping|png))",gyou)
-            # result.append(find_kekka[1])
-            print(find_kekka)            
+    art_text = re.sub("\n", "", art_text)
 
-    print(result)
+    if re.match("^(?=.*(ファイル|file)\:[^/.]+\.(jpg|jpeg|mp3|mp4|ping|png)).*$",art_text) != None:    
+        find_kekka = re.findall("(?:ファイル|file)\:([^/.]+\.(?:jpg|jpeg|mp3|mp4|ping|png))",art_text)
+
+    for i in find_kekka:
+        print(i)
 

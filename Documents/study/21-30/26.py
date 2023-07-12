@@ -10,8 +10,6 @@ if __name__ == "__main__":
 
     kisoinfo_text = f_r.kisoinfo(art_text)
 
-    
-
     chikan_kekka = re.sub("'''","",kisoinfo_text)
 
     f_r.file_output(chikan_kekka,"26_chikan")
