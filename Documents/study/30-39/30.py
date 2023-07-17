@@ -58,7 +58,7 @@ if __name__ == "__main__":
     text = text_kakou(text)
     result = keitaiso_yomikomi(text)
     
-    result_json = list_json_henkan(result)
+    result_json = prep.list_json_henkan_2(result)
 
     b = path.join(path.dirname(__file__), "output30.json")
     with open(b,'w',encoding='utf-8') as f2:    
