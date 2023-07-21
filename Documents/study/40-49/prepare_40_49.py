@@ -3,6 +3,8 @@ import MeCab
 import re
 import unicodedata
 from os import path
+from Class import morph as mor
+from Class import chunk as chu
 import json
 
 "テキストファイルを開く"

@@ -52,9 +52,9 @@ def morph_chushutsu(cabocha):
     # findallのアウトプットは一つしか発見されなくてもリストで返されるため、リストごとに処理
     # 基本は１行に一つしか該当の記載は存在しないと想定される。
         for i in result_bunkai:
-        # 基本形が存在しない場合があるため、例外処理
             if len(result_bunkai[0]) > 3:
                 input = Morph(i[0],i[3],i[1],i[2])
+        # 基本形が存在しない場合があるため、例外処理
             else:
                 input = Morph(sur = i[0],po = i[1],po1 = i[2])
             sentence.append(input)
