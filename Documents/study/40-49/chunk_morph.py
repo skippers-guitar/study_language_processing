@@ -5,16 +5,22 @@ import prepare_40_49 as prep
 from Class import morph as mor
 from Class import chunk as chu
 
-#filenameからクラスchunkとmorphを出力
-# [(全文)[(一文)[chunk,chunk,chunk...],[...]...]
-def chunk_morph(filename):
-    cabocha_txt = prep.open_txt(filename)
-    kakariukemoto_dic = index_kakaruke_chusyutsu(cabocha_txt)
+def chunk_morph_text(cabocha_txt):
+    kakariukemoto_dic = index_kakariuke_chusyutsu(cabocha_txt)
     result1 = morph_chunkinfo_chushutsu(cabocha_txt)
     result2 = morph_chunk_seikei(result1,kakariukemoto_dic)
     return(result2)    
 
-def index_kakaruke_chusyutsu(cabocha):
+#filenameからクラスchunkとmorphを出力
+# [(全文)[(一文)[chunk,chunk,chunk...],[...]...]
+def chunk_morph(filename):
+    cabocha_txt = prep.open_txt(filename)
+    kakariukemoto_dic = index_kakariuke_chusyutsu(cabocha_txt)
+    result1 = morph_chunkinfo_chushutsu(cabocha_txt)
+    result2 = morph_chunk_seikei(result1,kakariukemoto_dic)
+    return(result2)    
+
+def index_kakariuke_chusyutsu(cabocha):
     cabocha_kaigyo = cabocha.split("\n")
     kakariukemoto_index_dic = {}
 
@@ -102,10 +108,38 @@ def morph_chunk_seikei(result_chusyutsu,kakariukemoto_dic):
         sentence = []
     return(allsentence)
 
+#すべてのchunks配列を検索し、文節ごとの文字列（表層形）を出力
+def check_chunks_output_surface(al_chunk_ls,index):
+    output = ''
+    for i in al_chunk_ls:
+        for j in i:
+            if j.check_index(index):
+                output = j.al_morphs()
+                break
+    return(output)
+
+#index番号をキー、chunkを値とする辞書型配列を作成
+def make_chunks_dict(al_chunk_ls):
+    output = {}
+    for i in al_chunk_ls:
+        for j in i:
+            output[j.out_index()]=j
+    return(output)
+
+
+#index番号をキー、文節ごとの文字列（表層形）値とする辞書型配列を作成
+def make_morphs_surface_dict(al_chunk_ls):
+    output = {}
+    for i in al_chunk_ls:
+        for j in i:
+            output[j.out_index()]=j.al_morphs_without_kigo()
+    return(output)
+
+
 if __name__ == "__main__":  
     filename = "ai.ja.txt.parsed"
     cabocha_txt = prep.open_txt(filename)
-    kakariukemoto_dic = index_kakaruke_chusyutsu(cabocha_txt)
+    kakariukemoto_dic = index_kakariuke_chusyutsu(cabocha_txt)
     result1 = morph_chunkinfo_chushutsu(cabocha_txt)
     result2 = morph_chunk_seikei(result1,kakariukemoto_dic)
     for i in result2[0]:

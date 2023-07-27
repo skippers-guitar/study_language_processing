@@ -15,7 +15,7 @@ def open_txt(str):
         result = f.read()
     return result
 
-"テキストファイルを開く"
+"テキストファイルを出力する"
 def file_output(aaa,name_type):
     b = path.join(path.dirname(__file__), name_type)
     with open(b,'w',encoding='utf-8') as f2:

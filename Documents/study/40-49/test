@@ -1,0 +1,6 @@
+digraph {
+	graph [layout=dot]
+	node [charset="utf-8" fontname="MS Gothic" shape=box]
+	"生駒勇人は" -> "頑張っている。" [label="Edge 1"]
+	"とても" -> "頑張っている。" [label="Edge 2"]
+}

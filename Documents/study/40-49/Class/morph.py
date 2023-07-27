@@ -1,3 +1,5 @@
+# 表層形（surface），基本形（base），品詞（pos），品詞細分類1（pos1）
+
 class Morph:
     def __init__(self):
         self.surface = ''
